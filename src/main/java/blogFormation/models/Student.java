@@ -56,8 +56,8 @@ public class Student {
 
 	public void setNote(int note) {
 		this.note = note;
-	}
-
+	}	
+	
 	public Formation getFormation() {
 		return formation;
 	}
@@ -66,7 +66,5 @@ public class Student {
 	public void setFormation(Formation formation) {
 		this.formation = formation;
 	}
-
-	
 
 }

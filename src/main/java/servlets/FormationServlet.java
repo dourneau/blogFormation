@@ -1,24 +1,32 @@
 package servlets;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+
+import blogFormation.models.Formation;
+import blogFormation.models.Student;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import services.PostsServices;
 
 /**
- * Servlet implementation class FormationServlet
+ * Servlet implementation class Formation
  */
 @WebServlet("/formation")
 public class FormationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private List<Student> students = new ArrayList<Student>();
+	private List<Formation> formations = new ArrayList<Formation>();
+	private PostsServices postsServices = PostsServices.getInstance();
     /**
      * Default constructor. 
      */
     public FormationServlet() {
-        // TODO Auto-generated constructor stub
+        this.formations = postsServices.getFormations();
     }
 
 	/**
@@ -26,7 +34,10 @@ public class FormationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		request.setAttribute("formations", formations);
+		request.getRequestDispatcher("/WEB-INF/formation.jsp")
+		.forward(request, response);
 	}
 
 	/**

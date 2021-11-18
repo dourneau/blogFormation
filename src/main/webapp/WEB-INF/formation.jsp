@@ -1,6 +1,6 @@
+<%@page import="blogFormation.models.Formation"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="blogFormation.models.Formation"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% Formation formation = (Formation) request.getAttribute("post"); %>
+	<h1>Les formations</h1>
+	<ul>
+		<li>
+			Titre : <b>${formation.getTitle()}</b>
+		</li>
+		<li>
+			Programme : <b>${formation.getProgram()}</b>
+		</li>
+		<li>
+			Nombre d'étudiants : <b>${formation.getStudentNumber()}</b>
+		</li>
+	</ul>
 	
 </body>
 </html>
